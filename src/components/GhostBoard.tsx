@@ -1,15 +1,16 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { ScoreBoard } from "./ScoreBoard";
+import { CellContent } from "../types/GhostBoard.types";
+import "./GhostBoard.css";
 
-const INITIAL_BOARD = Array(9).fill(null);
+const INITIAL_BOARD: CellContent[] = Array(9).fill(null);
 
-export const GhostBoard = () => {
-  const [board, setBoard] = useState(INITIAL_BOARD);
-  const [score, setScore] = useState(0);
+export const GhostBoard: React.FC = () => {
+  const [board, setBoard] = useState<CellContent[]>(INITIAL_BOARD);
+  const [score, setScore] = useState<number>(0);
 
   const spawnGhost = () => {
-    const newBoard = Array(9).fill(null);
+    const newBoard: CellContent[] = Array(9).fill(null);
     const randomIndex = Math.floor(Math.random() * newBoard.length);
     newBoard[randomIndex] = "👻";
     setBoard(newBoard);
@@ -24,7 +25,7 @@ export const GhostBoard = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const catchGhost = (index) => {
+  const catchGhost = (index: number) => {
     if (board[index]) {
       setScore((prev) => prev + 1);
       setBoard((prev) => prev.map((v, i) => (i === index ? null : v)));
@@ -35,11 +36,11 @@ export const GhostBoard = () => {
   };
 
   return (
-    <div>
+    <div id="container">
       <ScoreBoard score={score} />
-      <div>
+      <div id="boardContainer">
         {board.map((cell, i) => (
-          <button key={i} onClick={() => catchGhost(i)}>
+          <button className="button" key={i} onClick={() => catchGhost(i)}>
             {cell || "❓"}
           </button>
         ))}

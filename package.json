@@ -1,11 +1,12 @@
 {
-  "name": "calculator",
+  "name": "ghost-buster-enzyme",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-scripts": "^2.1.1"
+    "react-scripts": "^2.1.1",
+    "typescript": "^3.9.10"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -14,6 +15,11 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "@types/enzyme-adapter-react-16": "^1.0.9",
+    "@types/jest": "^23.3.13",
+    "@types/node": "^10.17.60",
+    "@types/react": "^16.14.0",
+    "@types/react-dom": "^16.9.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0"
   },
